@@ -9,6 +9,10 @@ select order_id
      , shipping_cost
      , order_total
      , tracking_id
+     , shipping_service
+     , estimated_delivery_at
+     , delivered_at
+     , status
      
 from {{source('tutorial', 'orders')}}
 )
