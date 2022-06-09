@@ -1,11 +1,18 @@
 version: 2
 
 models:
-  - name: addresses
-  - name: events
-  - name: order_items
-  - name: orders
-  - name: products
-  - name: promos
-#   - name: superheroes 
-  - name: users
+- name: stg_addresses
+  description: Contains user addresses
+- name: stg_events
+  description: Contains information about events on the platform like user viewing a page, adding an item to cart or checking out.
+- name: stg_order_items
+  description: Contains information about the items in each order
+- name: stg_orders
+  description: Contains information about orders
+- name: stg_products
+  description: Contains information about the products on the platform
+- name: stg_promos
+  description: Contains information about active and inactive promo codes on the platform
+- name: stg_users
+  description: Contains user information
+  
