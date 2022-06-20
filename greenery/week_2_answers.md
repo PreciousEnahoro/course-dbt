@@ -22,23 +22,24 @@ FROM user_orders
 
 select sum(repeat_customer)*1.0/count(user_id) as user_repeat_rate
 from repeat_customers
-
 ```
 
-### What are good indicators of a user who will likely purchase again? 
-### What about indicators of users who are likely NOT to purchase again? 
-### If you had more data, what features would you want to look into to answer this question?
+### What are good indicators of a user who will likely purchase again? What about indicators of users who are likely NOT to purchase again? If you had more data, what features would you want to look into to answer this question?
 
 Users who used a promotion, had an earlier or on-time delivery delivery times, buy a lot of products and order frequently would likely purchase again,
-and vice-versa. 
-I would also want to look into how they rate us, via surveys or customer service ratings, and see how often they refer us to other people.
+and vice-versa. I would also want to look into how they rate us, via surveys or customer service ratings, and see how often they refer us to other people.
 
 ### Explain the marts models you added. Why did you organize the models in the way you did?
+
 #### Core
+I added the suggested fact and dimension tables - *dim_users* (combined users and their addresses); *dim_products* (Contains information about products, their inventory and sales so far); *fct_orders* (contains information about orders, with categories about delivery time and order geography. I used the *int_orders_extended* table to make the *fct_order* cleaner and easier to read.
 
 #### Marketing
+I created an intermediate table that combined users with each individual order they had (*int_user_orders_full*), and I used that to build a fact table to 
+show user's buying hebaviour over time (*fct_user_buying_behaviour*).
 
 #### Product
+I first created a intermediate table rearranging events by their type (*int_session_events*), and used that to create a fact table summarizing the events that happened per session, with some user information (*fct_user_sessions*). I also created another fact table summarizing the total page views, add to cart events and number of orders made for each product (*fct_product_session_activity*).
 
 
 ## Tests
@@ -47,15 +48,12 @@ I would also want to look into how they rate us, via surveys or customer service
 For all the models, I made sure that at the bare minimum, the primary key of the table was not null and unique. I also made sure that important fields like
 the user's first and last name were not nuull. I made sure prices, order and inventory related information were positive values.
 
-### Did you find any “bad” data as you added and ran tests on your models? 
-### How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
+### Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
 I didn't find bad data but I had to remove the unique test on user_id in my int table that combined orders and their users together, because some users 
 had multiple orders.
 
-### Your stakeholders at Greenery want to understand the state of the data each day. 
-### Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
+### Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
 I would create a checker I guess to flag and alert the data team when one of the tests failed through an email, though I'm not sure how this would be done
 in dbt.
 If it affects a dashboard or data product, I would send a slack message or email to the relevant stakeholders that the data is currently not accurate,
 or only accurate to a certain time point.
-
