@@ -14,7 +14,7 @@ select order_id
      , delivered_at
      , status
      
-from {{source('tutorial', 'orders')}}
+from {{source('greenery', 'orders')}}
 )
 
 select * from all_fields

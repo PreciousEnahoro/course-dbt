@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: int_session_events
+    description: Intermediate table rearranging events by their type
+    columns:
+      - name: event_id
+        tests: 
+          - unique
+          - not_null
+      - name: user_id
+        tests: 
+          - not_null
+      - name: session_id
+        tests: 
+          - not_null
+      - name: created_at
+        tests: 
+          - not_null
+  - name: fct_user_sessions
+    description: Fact table summarizing the events that happened per session, with some user information
+    columns:
+      - name: session_id
+        tests: 
+          - unique
+          - not_null
+      - name: user_id
+        tests: 
+          - not_null
+      - name: first_event
+        tests: 
+          - not_null
+      - name: last_event
+        tests: 
+          - not_null
+      - name: first_name
+        tests: 
+          - not_null
+      - name: last_name
+        tests: 
+          - not_null
+  - name: fct_product_session_activity
+    description: Fact table summarizing the total page views, add to cart events and number of orders made for each product
+    columns:
+      - name: product_id
+        tests: 
+          - unique
+          - not_null
+      - name: product_name
+        tests: 
+          - not_null
+      - name: total_product_page_views
+        tests: 
+          - positive_values
+      - name: total_add_to_cart
+        tests: 
+          - positive_values
+      - name: number_of_orders
+        tests: 
+          - positive_values

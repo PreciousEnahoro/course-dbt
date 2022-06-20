@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: Contains users and their address information
+    columns:
+      - name: user_id
+        tests: 
+          - unique
+          - not_null
+  - name: dim_products
+    description: Contains information about products, their inventory and sales so far.
+    columns:
+      - name: product_id
+        tests: 
+          - unique
+          - not_null
+      - name: num_orders_containing_product
+        tests: 
+          - positive_values
+      - name: total_quantity_of_product_sold
+        tests: 
+          - positive_values
+      - name: current_inventory
+        tests: 
+          - positive_values
+
+  - name: fct_orders
+    description: Contains information about orders; cleaner version of int_table.
+    columns:
+      - name: order_id
+        tests: 
+          - unique
+          - not_null
+
+  - name: int_orders_extended
+    description: Contains information about orders, with categories about delivery time.
+    columns:
+      - name: order_id
+        tests: 
+          - unique
+          - not_null

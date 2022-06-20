@@ -4,7 +4,7 @@ select product_id
      , name
      , price
      , inventory
-from {{source('tutorial', 'products')}}
+from {{source('greenery', 'products')}}
 )
 
 select * from all_fields

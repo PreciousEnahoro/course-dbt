@@ -4,7 +4,7 @@ with all_fields as (
 select order_id
      , product_id
      , quantity
-from {{source('tutorial', 'order_items')}}
+from {{source('greenery', 'order_items')}}
 )
 
 select * from all_fields

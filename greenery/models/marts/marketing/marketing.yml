@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_user_orders_full
+    description: Intermediate table combining user information and each individual order to use for further fact tables
+    columns:
+      - name: user_id
+        tests: 
+          - not_null
+      - name: order_id
+        tests: 
+          - unique
+          - not_null
+  - name: fct_user_buying_behaviour
+    description: Fact table showing information of users overall buying behaviour 
+    columns:
+      - name: user_id
+        tests: 
+          - unique
+          - not_null
+      - name: first_order
+        tests: 
+          - not_null
+      - name: last_order
+        tests: 
+          - not_null
+      - name: total_spend
+        tests: 
+          - positive_values
+      - name: number_of_orders
+        tests: 
+          - positive_values
+      

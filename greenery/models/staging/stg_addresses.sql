@@ -6,7 +6,7 @@ select address_id
      , zipcode
      , state
      , country
-from {{source('tutorial', 'addresses')}}
+from {{source('greenery', 'addresses')}}
 )
 
 select * from all_fields

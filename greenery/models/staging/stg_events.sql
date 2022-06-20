@@ -10,7 +10,7 @@ select event_id
      , order_id
      , product_id
      
-from {{source('tutorial', 'events')}}
+from {{source('greenery', 'events')}}
 )
 
 select * from all_fields

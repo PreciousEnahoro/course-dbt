@@ -2,7 +2,7 @@ version: 2
 
 sources:
 
-  - name: tutorial # name of the source 
+  - name: greenery # name of the source 
     schema: public # this is the schema our raw data lives in
     database: dbt # this is the name of our database
 

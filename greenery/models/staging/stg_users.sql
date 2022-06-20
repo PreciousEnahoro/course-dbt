@@ -8,7 +8,7 @@ select user_id
      , created_at
      , updated_at
      , address_id
-from {{source('tutorial', 'users')}}
+from {{source('greenery', 'users')}}
 )
 
 select * from all_fields
