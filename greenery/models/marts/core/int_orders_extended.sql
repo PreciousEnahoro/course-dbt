@@ -20,10 +20,8 @@ SELECT o.order_id
      , o.delivered_at
      , o.status as order_status
      , delivered_at - created_at as time_to_delivery
-     , case when date(delivered_at) = date(estimated_delivery_at) then 'Delivered on time'
-            when date(delivered_at) > date(estimated_delivery_at) then 'Delivered late'
-            when date(delivered_at) < date(estimated_delivery_at) then 'Delivered early'
-        end as delivery_time_status
+     , {{ delivery_status('delivered_at', 'estimated_delivery_at') }} as delivery_time_status
+    
     
 FROM {{ ref('stg_orders') }} as o
 

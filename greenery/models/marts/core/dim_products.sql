@@ -12,4 +12,5 @@ SELECT p.product_id
      , sum(oi.quantity) as total_quantity_of_product_sold
 FROM {{ ref('stg_products') }} as p
 left JOIN {{ ref('stg_order_items') }} as oi on oi.product_id= p.product_id
-group by 1,2,3,4
+
+{{ dbt_utils.group_by(n=4) }}

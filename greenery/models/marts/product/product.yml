@@ -1,6 +1,26 @@
 version: 2
 
 models:
+  - name: with_macro_int_session_events
+    description: Intermediate table rearranging events by their type; using a macro
+    tests: 
+      - dbt_utils.equal_rowcount:
+         compare_model: ref('int_session_events')
+    columns:
+      - name: event_id
+        tests: 
+          - unique
+          - not_null
+
+      - name: user_id
+        tests: 
+          - not_null
+      - name: session_id
+        tests: 
+          - not_null
+      - name: created_at
+        tests: 
+          - not_null
   - name: int_session_events
     description: Intermediate table rearranging events by their type
     columns:

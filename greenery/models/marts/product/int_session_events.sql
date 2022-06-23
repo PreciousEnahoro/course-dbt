@@ -14,4 +14,4 @@ session_id
 
 from{{ref('stg_events')}}
 
-group by 1,2,3,4,5,6
+{{ dbt_utils.group_by(n=6) }}

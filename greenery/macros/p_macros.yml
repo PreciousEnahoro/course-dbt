@@ -1,0 +1,12 @@
+version: 2
+
+macros:
+  - name: time_diff_between_dates_in_minutes
+    description: "Macro to show the time difference between two dates in minutes"
+    docs:
+      show: true
+
+  - name: delivery_status
+    description: "Assigning delivery status based on delivery date vs expected delivery date"
+    docs:
+      show: true
