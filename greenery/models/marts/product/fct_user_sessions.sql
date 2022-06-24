@@ -31,11 +31,6 @@ SELECT
      , count(case when {{event_type}} = 1 then event_id else null end) as "total_{{event_types['column_name'][loop.index0]}}" 
 
 {% endfor %}
-
-  /* , count(case when int_session_events.page_view = 1 then event_id else null end) as total_page_views
-   , count(case when int_session_events.add_to_cart = 1 then event_id else null end) as total_add_to_cart_events
-   , count(case when int_session_events.checkout = 1 then event_id else null end) as total_check_outs
-   , count(case when int_session_events.package_shipped = 1 then event_id else null end) as total_package_shipped*/
    , count(distinct int_session_events.product_id) as products_viewed
    , CASE WHEN MAX(order_id) is not null THEN 1
         ELSE 0 END as order_placed
