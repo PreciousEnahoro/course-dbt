@@ -5,22 +5,6 @@ From the table below, we see that the time with the highest number of sessions (
 This highlights a problem the product team should look into. This trend could possibly mean that the greenery site is currently not equipped to handle high traffic, which leads to customer dissatisfaction and thus, the low conversions during that time.
 
 
-<style>
-    .heatMap {
-        width: 70%;
-        text-align: center;
-    }
-    .heatMap th {
-        background: grey;
-        word-wrap: break-word;
-        text-align: center;
-    }
-    .heatMap tr:nth-child(40) { background: pink; }
-
-</style>
-
-<div class="heatMap">
-
 | session_start_day | hour | total_sessions | add_to_cart_rate | checkout_rate |
 |-------------------|------|----------------|------------------|---------------|
 | 2/9/21 0:00       | 23   | 2              | 100.00%          | 100.00%       |
@@ -73,7 +57,6 @@ This highlights a problem the product team should look into. This trend could po
 | 2/11/21 0:00      | 22   | 6              | 100.00%          | 100.00%       |
 | 2/11/21 0:00      | 23   | 13             | 100.00%          | 100.00%       |
 
-</div>
 
 
 
